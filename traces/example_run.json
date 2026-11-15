@@ -1,0 +1,122 @@
+{
+  "implementation": "from_scratch",
+  "final_answer": "推荐课程：CS205 人工智能导论，3 学分，授课教师：李老师。",
+  "messages": [
+    {
+      "role": "user",
+      "content": "找一门人工智能课程并给出详情"
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call-1",
+          "name": "search_courses",
+          "arguments": {
+            "keyword": "人工智能"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call-1",
+      "name": "search_courses",
+      "content": "[{\"id\": \"CS205\", \"name\": \"人工智能导论\", \"department\": \"计算机学院\", \"credits\": 3, \"teacher\": \"李老师\", \"description\": \"机器学习、智能体和生成式人工智能概览\"}]"
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call-2",
+          "name": "get_course_detail",
+          "arguments": {
+            "course_id": "CS205"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call-2",
+      "name": "get_course_detail",
+      "content": "{\"id\": \"CS205\", \"name\": \"人工智能导论\", \"department\": \"计算机学院\", \"credits\": 3, \"teacher\": \"李老师\", \"description\": \"机器学习、智能体和生成式人工智能概览\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "推荐课程：CS205 人工智能导论，3 学分，授课教师：李老师。"
+    }
+  ],
+  "trace": [
+    {
+      "iteration": 0,
+      "response": {
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call-1",
+            "name": "search_courses",
+            "arguments": {
+              "keyword": "人工智能"
+            }
+          }
+        ]
+      },
+      "tool_results": [
+        {
+          "tool_call_id": "call-1",
+          "name": "search_courses",
+          "output": [
+            {
+              "id": "CS205",
+              "name": "人工智能导论",
+              "department": "计算机学院",
+              "credits": 3,
+              "teacher": "李老师",
+              "description": "机器学习、智能体和生成式人工智能概览"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "iteration": 1,
+      "response": {
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call-2",
+            "name": "get_course_detail",
+            "arguments": {
+              "course_id": "CS205"
+            }
+          }
+        ]
+      },
+      "tool_results": [
+        {
+          "tool_call_id": "call-2",
+          "name": "get_course_detail",
+          "output": {
+            "id": "CS205",
+            "name": "人工智能导论",
+            "department": "计算机学院",
+            "credits": 3,
+            "teacher": "李老师",
+            "description": "机器学习、智能体和生成式人工智能概览"
+          }
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "response": {
+        "content": "推荐课程：CS205 人工智能导论，3 学分，授课教师：李老师。",
+        "tool_calls": []
+      },
+      "tool_results": []
+    }
+  ]
+}
